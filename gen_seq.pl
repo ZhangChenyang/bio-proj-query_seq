@@ -6,7 +6,7 @@ use Data::Dumper qw(Dumper);
 use Text::CSV;
 use Data::Dump qw(dump);
 
-open(my $fh, '>>', 'output.txt') or die "could not open";
+open(my $fh, '>>', './data/output.txt') or die "could not open";
 select $fh;
 my $file = $ARGV[0] or die "Need to get CSV file on the command line\n";
 open(my $data, '<', $file) or die "Could not open '$file' $!\n";

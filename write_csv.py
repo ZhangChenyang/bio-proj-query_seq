@@ -28,19 +28,20 @@ with open('./data/output.csv','w') as fp:
     writer = csv.writer(fp, delimiter=',')
     for row in all_row:
         if file_n == 0:
+            writer.writerow(row)
             file_n = 1
             continue
         chid = row[0][3:]
         start = row[1]
         end = row[2]
-        label = row[4]
+        label = row[17]
         key = '-'.join([chid, start, end, label])
         if key in seq_lines:
             seq = seq_lines[key]
         else:
             print "not right"
             exit(-1)
-        if label == 'Rev':
+        if label == '-':
             seq_copy = seq
             seq = [p[c] for c in seq_copy[::-1]]
             seq = ''.join(seq)
